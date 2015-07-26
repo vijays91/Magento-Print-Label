@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+        <myconf_vijaystore translate="label" module="printlabel">
+            <label>Print Label</label>
+            <sort_order>300</sort_order>
+        </myconf_vijaystore>
+    </tabs>	
+    <sections>
+        <printlabel_tab translate="label" module="printlabel">
+            <label>Print Label Setting</label>
+            <tab>myconf_vijaystore</tab>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <printlabel_setting translate="label comment">
+                    <label>Print Label Setting</label>
+                    <sort_order>503</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <printlabel_active translate="label comment">
+                            <label>Print Label</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </printlabel_active>
+                     </fields>
+                </printlabel_setting>		
+            </groups>
+        </printlabel_tab>
+    </sections>
+</config>

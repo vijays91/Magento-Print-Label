@@ -1,0 +1,49 @@
+<?php 
+$getOrderId = Mage::app()->getRequest()->getParam('order_id');
+$getOrderIncrementId  = $this->OrderincrementId($getOrderId);
+$getOrderCustomerName = $this->OrderCustomerName($getOrderId);
+$getOrderShippAddress = $this->OrderShippingAddress($getOrderId);
+$ordered_items = $this->OrderProducts($getOrderId);
+?>
+<p style="margin-top: 0px; margin-bottom: 20px;">
+	<img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" style="margin-bottom: 20px; border: none;" />
+</p>
+
+<p style="margin-top: 0px; margin-bottom: 20px;">I,&nbsp; <?php echo $getOrderCustomerName; ?>, have placed the order for</p>
+  <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;">
+    <thead>
+      <tr>
+        <td style="font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #EFEFEF; font-weight: bold; text-align: center; padding: 7px; color: #222222;" width="10%">Quantity</td>
+        <td style="font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #EFEFEF; font-weight: bold; text-align: left; padding: 7px; color: #222222;">Product Details</td>
+      </tr>
+    </thead>
+    <tbody>
+		<?php foreach($ordered_items as $item) { ?>
+			<tr>
+				<td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: center; padding: 7px;"><?php $qty = $item->getQtyOrdered(); echo intval($qty); ?></td>
+				<td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;">
+					<b><?php echo $item->getName();?></b>
+					<div style="margin-top: 10px;"> <b>SKU: </b> <?php echo $item->getSku();?></div>
+				</td>
+			</tr>
+		<?php } ?>
+	</tbody>
+  </table>
+  <p style="margin-top: 0px; margin-bottom: 20px;"><b>Order Id : </b> <?php echo $getOrderIncrementId; ?> </p>
+  
+  <div style="margin-top: 0px; margin-bottom: 20px;">
+	<div> <b><?php echo $getOrderCustomerName; ?> </b></div>
+	<div> <?php echo $getOrderShippAddress; ?> </div>
+  </div>
+  
+  <p style="margin-top: 0px; margin-bottom: 20px;">I hereby confirm that said above goods are being purchased for my internal or personal purpose and not for re-sale. I further understand and agree to this site Terms and Conditions of Sale available at <u><?php echo rtrim(Mage::getBaseUrl(), "/");?></u> or upon request.</p>
+
+</div>
+<button id="print_butt" onclick="printFunction()">Print this page</button>
+
+<script>
+function printFunction() {
+	document.getElementById("print_butt").style.display = "none";
+    window.print();
+}
+</script>

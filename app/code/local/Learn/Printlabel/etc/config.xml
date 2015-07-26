@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Learn_Printlabel>
+            <version>1.0.0.0</version>
+        </Learn_Printlabel>
+    </modules>
+	
+	<frontend>
+		<routers>
+			<printlabel>
+				<use>standard</use>
+				<args>
+					<module>Learn_Printlabel</module>
+					<frontName>printlabel</frontName>
+				</args>
+			</printlabel>
+		</routers>
+		<layout>
+			<updates>
+				<printlabel>
+					<file>learn/printlabel.xml</file>
+				</printlabel>
+			</updates>
+		</layout>
+	</frontend>
+	
+    <global>
+        <blocks>
+            <printlabel>
+                <class>Learn_Printlabel_Block</class>
+            </printlabel>
+			
+			<adminhtml>
+				<rewrite>
+					<sales_order_view>Learn_Printlabel_Block_Sales_Order_View</sales_order_view>
+				</rewrite>
+			</adminhtml>
+        </blocks>
+		<!-- Initialize the Helper class -->
+		<helpers>
+			<printlabel>
+				<class>Learn_Printlabel_Helper</class>
+			</printlabel>
+		</helpers>
+		
+		<models>
+			<sales>
+				<rewrite>
+					<order>Learn_Printlabel_Model_Order</order>
+				</rewrite>
+			</sales>
+		</models>
+    </global>
+	
+	<admin>
+        <routers>
+            <printlabel>
+                <use>admin</use>
+                <args>
+                    <module>Learn_Printlabel</module>
+                    <frontName>printlabel</frontName>
+                </args>
+            </printlabel>
+        </routers>
+    </admin>
+	
+    <default>
+		<printlabel_tab>
+			<printlabel_setting>
+				<printlabel_active>1</printlabel_active>
+			</printlabel_setting>
+		</printlabel_tab>
+    </default>
+</config>
